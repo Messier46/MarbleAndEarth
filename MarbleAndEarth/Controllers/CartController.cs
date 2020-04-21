@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -38,7 +39,14 @@ namespace MarbleAndEarth.Controllers
                     }
                     Session["cart"] = cart;
                 }
-                
+
+                var toChange = context.Products.Find(id);
+                toChange.Qty -= 1;
+
+                context.Entry(toChange).State = EntityState.Modified;
+                context.SaveChanges();
+
+
             }
             return RedirectToAction("Index");
         }
@@ -48,8 +56,19 @@ namespace MarbleAndEarth.Controllers
             
             List<Item> cart = (List<Item>)Session["cart"];
             int index = isExist(id);
+            int removedQty = cart[index].Quanity;
             cart.RemoveAt(index);
             Session["cart"] = cart;
+            using(MEContext context = new MEContext())
+            {
+                var toChange = context.Products.Find(id);
+                toChange.Qty += removedQty;
+
+                context.Entry(toChange).State = EntityState.Modified;
+                context.SaveChanges();
+            }
+
+
             return RedirectToAction("Index");
         }
 

@@ -1,7 +1,7 @@
 ﻿@model MarbleAndEarth.Models.Product
 
 @{
-    ViewBag.Title = "Details";
+	ViewBag.Title = "Details";
 	var idHolder = Model.Id;
 }
 
@@ -64,7 +64,7 @@
 
 		<div class="row">
 			<div class="col-lg-12">
-				<img src="@Html.DisplayFor(model => model.Image)" alt="image to be hear" />
+				<img />
 
 			</div>
 		</div>
@@ -73,9 +73,12 @@
 	</div>
 </div>
 <div class="row">
+	@if (Model.Qty > 0)
+	{
 	<div class="col-lg-12">
-		<a href="@Url.Action("Buy", "Cart", new { id = Model.Id })">Add to cart</a>
+		<a class="btn btn-primary" href="@Url.Action("Buy", "Cart", new { id = Model.Id })">Add to cart</a>
 	</div>
+	}
 </div>
 <p>
     @Html.ActionLink("Return to store page", "Index")
