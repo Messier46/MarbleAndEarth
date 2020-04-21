@@ -11,6 +11,7 @@ namespace MarbleAndEarth.Controllers
     public class CartController : Controller
     {
         // GET: Cart
+        [Authorize]
         public ActionResult Index()
         {
             return View();
@@ -58,6 +59,10 @@ namespace MarbleAndEarth.Controllers
             int index = isExist(id);
             int removedQty = cart[index].Quanity;
             cart.RemoveAt(index);
+            if(cart.Count == 0)
+            {
+                cart = null;
+            }
             Session["cart"] = cart;
             using(MEContext context = new MEContext())
             {

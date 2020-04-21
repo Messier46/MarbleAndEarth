@@ -1,8 +1,4 @@
 ﻿@using MarbleAndEarth.Models;
-@{
-	Layout = null;
-}
-
 
 
 <html>
@@ -12,39 +8,55 @@
 	</head>
 
 	<body>
+		<div class="row">
 
-		<h3>Cart Page</h3>
-		<table cellpadding="2" cellspacing="2" border="1">
-			<tr>
-				<th></th>
-				<th>Name</th>
-				<th>Price</th>
-				<th>Quantity</th>
-				<th>Sub Total</th>
-			</tr>
-			@if(Session["cart"] != null) { 
-				foreach (Item item in (List<Item>)Session["cart"])
-				{
-					<tr>
-						<td><a href="@Url.Action("Remove", "Cart", new { id = item.Product.Id })">Remove</a></td>
-						<td>@item.Product.Name</td>
-						<td>@item.Product.Price</td>
-						<td>@item.Quanity</td>
-						<td>@(item.Product.Price * item.Quanity)</td>
-					</tr>
-				}
-				<tr>
-					<td align="right" colspan="6">Sum</td>
-					<td>
-						@{ 
+			<h3 class="text-center">Cart Page</h3>
+			@if (Session["cart"] != null )
+			{
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Name</th>
+							<th>Price</th>
+							<th>Quantity</th>
+							<th>Sub Total</th>
+						</tr>
+					</thead>
+
+
+					<tbody>
+						@foreach (Item item in (List<Item>)Session["cart"])
+						{
+							<tr>
+								<td><a class="btn btn-danger" href="@Url.Action("Remove", "Cart", new { id = item.Product.Id })">Remove</a></td>
+								<td>@item.Product.Name</td>
+								<td>@item.Product.Price</td>
+								<td>@item.Quanity</td>
+								<td>@(item.Product.Price * item.Quanity)</td>
+							</tr>
+						}
+					</tbody>
+
+					
+				</table>
+				<div class="row moveR">
+					<h4>Total</h4>
+					<h4>
+						@{
 							List<Item> cart = (List<Item>)Session["cart"];
 							var total = cart.Sum(item => item.Product.Price * item.Quanity);
 						}
+
 						@total
-					</td>
-				</tr>
+					</h4>
+				</div>
 			 }
-		</table>
+			@if(Session["cart"] == null)
+			{
+				<h2>Nothing in your cart</h2>
+			}
+			</div>
 		<br />
 		<a href="@Url.Action("Index", "Product")">Continue Shopping</a>
 	</body>
