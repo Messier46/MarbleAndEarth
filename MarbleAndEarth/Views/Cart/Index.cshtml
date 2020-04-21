@@ -1,0 +1,59 @@
+﻿@using MarbleAndEarth.Models;
+@{
+	Layout = null;
+}
+
+
+
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width" />
+		<title>Cart</title>
+	</head>
+
+	<body>
+
+		<h3>Cart Page</h3>
+		<table cellpadding="2" cellspacing="2" border="1">
+			<tr>
+				<th></th>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Quantity</th>
+				<th>Sub Total</th>
+			</tr>
+			@if(Session["cart"] != null) { 
+				foreach (Item item in (List<Item>)Session["cart"])
+				{
+					<tr>
+						<td><a href="@Url.Action("Remove", "Cart", new { id = item.Product.Id })">Remove</a></td>
+						<td>@item.Product.Name</td>
+						<td>@item.Product.Price</td>
+						<td>@item.Quanity</td>
+						<td>@(item.Product.Price * item.Quanity)</td>
+					</tr>
+				}
+				<tr>
+					<td align="right" colspan="6">Sum</td>
+					<td>
+						@{ 
+							List<Item> cart = (List<Item>)Session["cart"];
+							var total = cart.Sum(item => item.Product.Price * item.Quanity);
+						}
+						@total
+					</td>
+				</tr>
+			 }
+		</table>
+		<br />
+		<a href="@Url.Action("Index", "Product")">Continue Shopping</a>
+	</body>
+
+
+
+
+
+
+
+
+</html>
