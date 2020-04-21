@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MarbleAndEarth.Models;
+using Microsoft.AspNet.Identity;
 
 namespace MarbleAndEarth.Controllers
 {
@@ -76,6 +77,17 @@ namespace MarbleAndEarth.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public ActionResult Checkout()
+        {
+
+
+            return View();
+        }
+
+
+
+
 
         private int isExist(int id)
         {
