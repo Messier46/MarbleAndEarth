@@ -22,7 +22,11 @@ namespace MarbleAndEarth.Controllers
         // GET: Product/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            using(MEContext context = new MEContext())
+            {
+                var display = context.Products.Find(id);
+                return View(display);
+            }
         }
 
         // GET: Product/Create
