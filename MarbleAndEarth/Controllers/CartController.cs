@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 
 namespace MarbleAndEarth.Controllers
 {
+
     public class CartController : Controller
     {
         // GET: Cart
@@ -17,6 +18,7 @@ namespace MarbleAndEarth.Controllers
         {
             return View();
         }
+        [Authorize]
         public ActionResult Buy(int id)
         {
             using (MEContext context = new MEContext())
@@ -52,7 +54,7 @@ namespace MarbleAndEarth.Controllers
             }
             return RedirectToAction("Index");
         }
-
+        [Authorize]
         public ActionResult Remove(int id)
         {
             
@@ -78,15 +80,42 @@ namespace MarbleAndEarth.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Checkout()
+        {
+            if (Session["cart"] == null)
+            {
+                return Redirect("~/Product/Index/");
+            }
+            return View();
+        }
+
+        [Authorize]
+        [HttpPost]
         public ActionResult Checkout(Purchases obj)
         {
+            if (obj == null)
+            {
+                Response.Redirect("Index");
+            }
+            List<Item> cart = (List<Item>)Session["cart"];
+
+            List<string> products = new List<string>();
+            for (int i = 0; i < cart.Count; i++)
+            {
+                products.Add(cart[i].Product.Id.ToString());
+            }
+            string prodIdString = string.Join(",", products.ToArray());
             try
             {
-                using(MEContext context = new MEContext())
+                using (MEContext context = new MEContext())
                 {
+                    obj.CustomerId = User.Identity.GetUserId();
+                    obj.ProductId = prodIdString;
+                    obj.PurchaseDate = DateTime.Now;
                     context.Purchases.Add(obj);
                     context.SaveChanges();
-                    return RedirectToAction("localhost");
+                    Session["cart"] = null;
+                    return Redirect("~/Home/Index/");
                 }
             }
             catch

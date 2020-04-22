@@ -185,6 +185,10 @@
     <Compile Include="Migrations\202004221511589_FillOutPurchases.Designer.cs">
       <DependentUpon>202004221511589_FillOutPurchases.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004221738118_Change-Id_and_added-City.cs" />
+    <Compile Include="Migrations\202004221738118_Change-Id_and_added-City.Designer.cs">
+      <DependentUpon>202004221738118_Change-Id_and_added-City.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Item.cs" />
@@ -256,8 +260,8 @@
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Shared\_MELayout.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Checkout2.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
-    <Content Include="Views\Cart\CheckO.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -282,6 +286,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004221511589_FillOutPurchases.resx">
       <DependentUpon>202004221511589_FillOutPurchases.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004221738118_Change-Id_and_added-City.resx">
+      <DependentUpon>202004221738118_Change-Id_and_added-City.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
