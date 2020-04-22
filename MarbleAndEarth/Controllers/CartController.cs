@@ -78,11 +78,22 @@ namespace MarbleAndEarth.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Checkout()
+        public ActionResult Checkout(Purchases obj)
         {
+            try
+            {
+                using(MEContext context = new MEContext())
+                {
+                    context.Purchases.Add(obj);
+                    context.SaveChanges();
+                    return RedirectToAction("localhost");
+                }
+            }
+            catch
+            {
+                return View();
+            }
 
-
-            return View();
         }
 
 

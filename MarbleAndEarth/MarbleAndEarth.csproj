@@ -177,6 +177,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004141740287_InitialCreate.cs" />
+    <Compile Include="Migrations\202004141740287_InitialCreate.Designer.cs">
+      <DependentUpon>202004141740287_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004221511589_FillOutPurchases.cs" />
+    <Compile Include="Migrations\202004221511589_FillOutPurchases.Designer.cs">
+      <DependentUpon>202004221511589_FillOutPurchases.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Purchases.cs" />
@@ -248,6 +257,7 @@
     <Content Include="Views\Shared\_MELayout.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Cart\CheckO.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -265,6 +275,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202004141740287_InitialCreate.resx">
+      <DependentUpon>202004141740287_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004221511589_FillOutPurchases.resx">
+      <DependentUpon>202004221511589_FillOutPurchases.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
