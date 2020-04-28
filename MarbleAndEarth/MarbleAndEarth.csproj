@@ -170,6 +170,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -188,6 +189,10 @@
     <Compile Include="Migrations\202004221738118_Change-Id_and_added-City.cs" />
     <Compile Include="Migrations\202004221738118_Change-Id_and_added-City.Designer.cs">
       <DependentUpon>202004221738118_Change-Id_and_added-City.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004281839200_emal.cs" />
+    <Compile Include="Migrations\202004281839200_emal.Designer.cs">
+      <DependentUpon>202004281839200_emal.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -263,10 +268,12 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\Checkout2.cshtml" />
     <Content Include="Views\Cart\Checkout.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Web.config" />
+    <Content Include="Views\Admin\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Admin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -290,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004221738118_Change-Id_and_added-City.resx">
       <DependentUpon>202004221738118_Change-Id_and_added-City.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004281839200_emal.resx">
+      <DependentUpon>202004281839200_emal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

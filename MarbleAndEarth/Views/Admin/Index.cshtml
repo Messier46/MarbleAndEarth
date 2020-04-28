@@ -1,0 +1,76 @@
+﻿@model IEnumerable<MarbleAndEarth.Models.Purchases>
+
+@{
+	ViewBag.Title = "Admin Page";
+}
+
+<h2>Purchases</h2>
+
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.CustomerEmail)
+		</th>
+
+		<th>
+			@Html.DisplayNameFor(model => model.PurchaseDate)
+		</th>
+
+		<th>
+			@Html.DisplayNameFor(model => model.ProductId)
+		</th>
+
+		<th>
+			@Html.DisplayNameFor(model => model.ShippingAddr)
+		</th>
+
+		<th>
+			@Html.DisplayNameFor(model => model.ShippingCity)
+		</th>
+
+		<th>
+			@Html.DisplayNameFor(model => model.ShippingState)
+		</th>
+		<th></th>
+	</tr>
+
+	@if (Model != null)
+	{
+		foreach (var item in Model)
+		{
+			<tr>
+				<td>
+					@Html.DisplayFor(modelItem => item.CustomerEmail)
+
+				</td>
+
+				<td>
+					@Html.DisplayFor(modelItem => item.PurchaseDate)
+				</td>
+
+				<td>
+					@Html.DisplayFor(modelItem => item.ProductId)
+				</td>
+
+				<td>
+					@Html.DisplayFor(modelItem => item.ShippingAddr)
+				</td>
+
+				<td>
+					@Html.DisplayFor(modelItem => item.ShippingCity)
+				</td>
+
+				<td>
+					@Html.DisplayFor(modelItem => item.ShippingState)
+				</td>
+
+
+			</tr>
+		}
+	}
+
+</table>
+@if (Model == null)
+{
+	<h2>Sorry, no purchases available at this time</h2>
+}

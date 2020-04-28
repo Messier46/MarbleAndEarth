@@ -75,10 +75,20 @@
 <div class="row">
 	@if (Model.Qty > 0)
 	{
-		
-	<div class="col-lg-12">
-		<a class="btn btn-primary" href="@Url.Action("Buy", "Cart", new { id = Model.Id })">Add to cart</a>
-	</div>
+		if (!User.IsInRole("Admin"))
+		{
+			<div class="col-lg-12">
+				<a class="btn btn-primary" href="@Url.Action("Buy", "Cart", new { id = Model.Id })">Add to cart</a>
+			</div>
+		}
+
+	}
+	@if (User.IsInRole("Admin"))
+	{
+		<div class="col-lg-12">
+			<a class="btn btn-warning" href="@Url.Action("Edit", "Admin", new { id = Model.Id })">Edit</a>
+			<a class="btn btn-danger" href="@Url.Action("Delete", "Admin", new { id = Model.Id })">Delete</a>
+		</div>
 	}
 </div>
 <p>
