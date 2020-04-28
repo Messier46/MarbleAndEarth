@@ -9,16 +9,15 @@ using Microsoft.AspNet.Identity;
 
 namespace MarbleAndEarth.Controllers
 {
-
+    [Authorize]
     public class CartController : Controller
     {
         // GET: Cart
-        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
-        [Authorize]
+        
         public ActionResult Buy(int id)
         {
             using (MEContext context = new MEContext())
@@ -54,7 +53,7 @@ namespace MarbleAndEarth.Controllers
             }
             return RedirectToAction("Index");
         }
-        [Authorize]
+        
         public ActionResult Remove(int id)
         {
             
@@ -89,7 +88,7 @@ namespace MarbleAndEarth.Controllers
             return View();
         }
 
-        [Authorize]
+        
         [HttpPost]
         public ActionResult Checkout(Purchases obj)
         {
