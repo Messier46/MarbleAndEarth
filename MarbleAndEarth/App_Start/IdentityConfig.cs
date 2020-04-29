@@ -11,15 +11,32 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using MarbleAndEarth.Models;
+using SendGrid;
+using SendGrid.Helpers.Mail;
 
 namespace MarbleAndEarth
 {
     public class EmailService : IIdentityMessageService
     {
-        public Task SendAsync(IdentityMessage message)
+        public async Task SendAsync(IdentityMessage message)
         {
+            string key = @"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";
+
+            var client = new SendGridClient(key);
+            var from = new EmailAddress("vicker97@outlook.com", "Adam Vickerman");
+
+            var subject = message.Subject;
+            var to = new EmailAddress(message.Destination, "New User");
+            var plainTextContent = message.Body;
+            var htmlContent = message.Body;
+
+            var email = MailHelper.CreateSingleEmail(from, to, subject, plainTextContent, htmlContent);
+
+            await client.SendEmailAsync(email);
+
+
             // Plug in your email service here to send an email.
-            return Task.FromResult(0);
+            //return Task.FromResult(0);
         }
     }
 
