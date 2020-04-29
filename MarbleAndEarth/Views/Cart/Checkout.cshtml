@@ -5,60 +5,68 @@
     Layout = "~/Views/Shared/_MELayout.cshtml";
 }
 
-<h2>Checkout</h2>
-
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-	<h4>Purchases</h4>
-	<hr />
-
-
-	<div class="form-group">
-		<h4 class="control-label col-md-2">Shipping Address</h4>
-		<div class="col-md-10">
-			@Html.EditorFor(model => model.ShippingAddr, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.ShippingAddr, "", new { @class = "text-danger" })
-		</div>
-	</div>
-
-	<div class="form-group">
-		<h4 class="control-label col-md-2">Shipping City</h4>
-		<div class="col-md-10">
-			@Html.EditorFor(model => model.ShippingCity, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.ShippingCity, "", new { @class = "text-danger" })
-		</div>
-	</div>
-
-	<div class="form-group">
-		<h4 class="control-label col-md-2">Shipping State</h4>
-		<div class="col-md-10">
-			@Html.EditorFor(model => model.ShippingState, new { htmlAttributes = new { @class = "form-control" } })
-			@Html.ValidationMessageFor(model => model.ShippingState, "", new { @class = "text-danger" })
-		</div>
-	</div>
-
-	<div class="form-group">
-		<h4 class="control-label col-md-2">Payment Method</h4>
-		<div class="col-md-10">
-			<label>Credit/Debit</label>
-			@Html.RadioButtonFor(model => model.PayMethod, "Credit/Debit") 
-			<label>PayPal</label>
-			@Html.RadioButtonFor(model => model.PayMethod, "Paypal") 
-			@Html.ValidationMessageFor(model => model.PayMethod, "", new { @class = "text-danger" })
-		</div>
-	</div>
-
-	<div class="form-group">
-		<div class="col-md-offset-2 col-md-10">
-			<input type="submit" value="Submit" class="btn btn-default" />
-		</div>
+<div class="row">
+	<div class="col-lg-12 headText">
+		<h2>Checkout</h2>
 	</div>
 </div>
-}
 
+<div class="row">
+	<div class="col-lg-12">
+
+		@using (Html.BeginForm())
+		{
+			@Html.AntiForgeryToken()
+
+			<div class="form-horizontal">
+				<h4>Purchases</h4>
+				<hr />
+
+
+				<div class="form-group">
+					<h4 class="control-label col-md-2">Shipping Address</h4>
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.ShippingAddr, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.ValidationMessageFor(model => model.ShippingAddr, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+				<div class="form-group">
+					<h4 class="control-label col-md-2">Shipping City</h4>
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.ShippingCity, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.ValidationMessageFor(model => model.ShippingCity, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+				<div class="form-group">
+					<h4 class="control-label col-md-2">Shipping State</h4>
+					<div class="col-md-10">
+						@Html.EditorFor(model => model.ShippingState, new { htmlAttributes = new { @class = "form-control" } })
+						@Html.ValidationMessageFor(model => model.ShippingState, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+				<div class="form-group">
+					<h4 class="control-label col-md-2">Payment Method</h4>
+					<div class="col-md-10">
+						<label>Credit/Debit</label>
+						@Html.RadioButtonFor(model => model.PayMethod, "Credit/Debit")
+						<label>PayPal</label>
+						@Html.RadioButtonFor(model => model.PayMethod, "Paypal")
+						@Html.ValidationMessageFor(model => model.PayMethod, "", new { @class = "text-danger" })
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-md-offset-2 col-md-10">
+						<input type="submit" value="Submit" class="btn btn-default" />
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+</div>
 <div>
     @Html.ActionLink("Back to Cart", "Index")
 </div>

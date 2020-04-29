@@ -10,38 +10,59 @@
 
 	<body>
 		<div class="row">
-
-			<h3 class="text-center">Cart Page</h3>
-			@if (Session["cart"] != null )
-			{
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th></th>
-							<th>Name</th>
-							<th>Price</th>
-							<th>Quantity</th>
-							<th>Sub Total</th>
-						</tr>
-					</thead>
-
-
-					<tbody>
-						@foreach (Item item in (List<Item>)Session["cart"])
-						{
+			<div class="col-lg-12">
+				<h2 class="text-center headText">Cart</h2>
+				@if (Session["cart"] != null)
+				{
+					<table class="table table-hover">
+						<thead>
 							<tr>
-								<td><a class="btn btn-danger" href="@Url.Action("Remove", "Cart", new { id = item.Product.Id })">Remove</a></td>
-								<td>@item.Product.Name</td>
-								<td>@item.Product.Price</td>
-								<td>@item.Quanity</td>
-								<td>@(item.Product.Price * item.Quanity)</td>
+								<th></th>
+								<th>Name</th>
+								<th>Price</th>
+								<th>Quantity</th>
+								<th>Sub Total</th>
 							</tr>
-						}
-					</tbody>
+						</thead>
+
+
+						<tbody>
+							@foreach (Item item in (List<Item>)Session["cart"])
+							{
+								<tr>
+									<td><a class="btn btn-danger" href="@Url.Action("Remove", "Cart", new { id = item.Product.Id })">Remove</a></td>
+									<td>@item.Product.Name</td>
+									<td>@item.Product.Price</td>
+									<td>@item.Quanity</td>
+									<td>@(item.Product.Price * item.Quanity)</td>
+								</tr>
+							}
+						</tbody>
+
+
+					</table>
+
+				}
+
+			</div>
+		</div>
+		@if (Session["cart"] == null)
+		{
+			<div class="row">
+				<div class="col-lg-12">
 
 					
-				</table>
-				<div class="row moveR">
+					<h3>Nothing in your cart</h3>
+
+
+
+				</div>
+			</div>
+		}
+		@if (Session["cart"] != null)
+		{
+			<div class="row moveR">
+				<div class="col-lg-12">
 					<h4>Total</h4>
 					<h4>
 						@{
@@ -53,12 +74,11 @@
 					</h4>
 					<a class="btn btn-success" href="@Url.Action("Checkout","Cart")">Checkout</a>
 				</div>
-			 }
-			@if(Session["cart"] == null)
-			{
-				<h2>Nothing in your cart</h2>
-			}
+
 			</div>
+		}
+
+
 		<br />
 		<a href="@Url.Action("Index", "Product")">Continue Shopping</a>
 	</body>

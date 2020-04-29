@@ -4,10 +4,15 @@
 	ViewBag.Title = "Store Page";
 }
 
-<h2>Products Available</h2>
+<div class="row headText">
+	<div class="col-lg-12">
+		<h2>Products Available</h2>
+
+	</div>
+</div>
 @if (User.IsInRole("Admin"))
 {
-	<a class="btn btn-primary" href="@Url.Action("Create","Admin")">Add a new Product</a>
+	<a class="btn btn-primary addButton" href="@Url.Action("Create","Admin")">Add a new Product</a>
 }
 <table class="table">
 	<tr>
@@ -43,7 +48,7 @@
 					@Html.DisplayFor(modelItem => item.Description)
 				</td>
 
-				<td>
+				<td class="detail">
 					@Html.ActionLink("Details", "Details", new { id = item.Id })
 				</td>
 			</tr>

@@ -18,7 +18,13 @@ h1, h2, h3, h4, h5 {
 }
 .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
 	color: black;
+	font-size: 16px;
 }
+
+.navbar-inverse .navbar-brand {
+	font-size: 20px;
+}
+
 /*Home page*/
 .jumbotron {
 	text-align: center;
@@ -48,6 +54,36 @@ h1, h2, h3, h4, h5 {
 	padding-top: 20px;
 }
 
+/*Product*/
+.addButton {
+	margin: auto;
+	float: right;
+	margin-bottom: 10px;
+}
+.detail a{
+	padding: 5px;
+	border: 1px solid black;
+	border-radius: 5px;
+	color: black;
+
+}
+table {
+	border-top: 1px solid #303030;
+}
+/*Details*/
+.deButtons {
+	padding-bottom: 15px;
+	align-content: center;
+}
+.delBu{
+	margin-left: 15px;
+}
+
+/*Cart*/
+.moveR {
+	text-align: right;
+}
+
 
 /*footer*/
 footer {
@@ -55,4 +91,29 @@ footer {
 }
 footer a {
 	color: grey;
+}
+
+
+/*Account*/
+.rememberMe {
+	margin-left: 50px;
+}
+/**/
+
+
+@media screen and (max-width: 991px) {
+	.headText {
+		margin-top: 55px;
+	}
+	.control-label {
+		float: left !important;
+	}
+}
+@media screen and (max-width: 767px) {
+	.headText {
+		margin-top: 0px;
+	}
+	.control-label {
+		float: none !important;
+	}
 }
