@@ -27,7 +27,15 @@ namespace MarbleAndEarth.Controllers
                     foreach(var x in idSp)
                     {
                         var y = context.Products.Find(int.Parse(x));
-                        holder = holder +  y.Name + ", ";
+                        if(y != null)
+                        {
+                            holder = holder +  y.Name + ", ";
+
+                        }
+                        else
+                        {
+                            holder = holder + "Removed product, ";
+                        }
                     }
                     list[re].ProductId = holder;
                     re++;
@@ -52,13 +60,16 @@ namespace MarbleAndEarth.Controllers
 
         // POST: Admin/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Product obj)
         {
             try
             {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
+                using (MEContext context = new MEContext())
+                {
+                    context.Products.Add(obj);
+                    context.SaveChanges();
+                    return Redirect("~/Product/Index");
+                }
             }
             catch
             {
@@ -69,7 +80,12 @@ namespace MarbleAndEarth.Controllers
         // GET: Admin/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            Product result = null;
+            using (MEContext context = new MEContext())
+            {
+                result = context.Products.Find(id);
+            }
+            return View(result);
         }
 
         // POST: Admin/Edit/5
@@ -78,9 +94,14 @@ namespace MarbleAndEarth.Controllers
         {
             try
             {
-                // TODO: Add update logic here
+                using (MEContext context = new MEContext())
+                {
+                    var c = context.Products.Find(id);
+                    TryUpdateModel(c);
+                    context.SaveChanges();
+                    return Redirect("~/Product/Index");
+                }
 
-                return RedirectToAction("Index");
             }
             catch
             {
@@ -91,7 +112,12 @@ namespace MarbleAndEarth.Controllers
         // GET: Admin/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            Product result = null;
+            using (MEContext context = new MEContext())
+            {
+                result = context.Products.Find(id);
+            }
+            return View(result);
         }
 
         // POST: Admin/Delete/5
@@ -100,9 +126,13 @@ namespace MarbleAndEarth.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                using (MEContext context = new MEContext())
+                {
+                    var c = context.Products.Find(id);
+                    context.Products.Remove(c);
+                    context.SaveChanges();
+                    return Redirect("~/Product/Index");
+                }
             }
             catch
             {

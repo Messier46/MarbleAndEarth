@@ -38,39 +38,38 @@
 	{
 		foreach (var item in Model)
 		{
-			<tr>
-				<td>
-					@Html.DisplayFor(modelItem => item.CustomerEmail)
+<tr>
+	<td>
+		@Html.DisplayFor(modelItem => item.CustomerEmail)
+		
+	</td>
 
-				</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.PurchaseDate)
+	</td>
 
-				<td>
-					@Html.DisplayFor(modelItem => item.PurchaseDate)
-				</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.ProductId)
+	</td>
 
-				<td>
-					@Html.DisplayFor(modelItem => item.ProductId)
-				</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.ShippingAddr)
+	</td>
 
-				<td>
-					@Html.DisplayFor(modelItem => item.ShippingAddr)
-				</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.ShippingCity)
+	</td>
 
-				<td>
-					@Html.DisplayFor(modelItem => item.ShippingCity)
-				</td>
+	<td>
+		@Html.DisplayFor(modelItem => item.ShippingState)
+	</td>
 
-				<td>
-					@Html.DisplayFor(modelItem => item.ShippingState)
-				</td>
-
-
-			</tr>
+	
+</tr>
 		}
 	}
-
+	@if (Model == null)
+	{
+		<h2>Sorry, no purchases available at this time</h2>
+	}
 </table>
-@if (Model == null)
-{
-	<h2>Sorry, no purchases available at this time</h2>
-}
