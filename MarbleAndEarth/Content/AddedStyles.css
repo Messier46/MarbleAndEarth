@@ -1,4 +1,58 @@
 ﻿body {
-	background-color: bisque;
-	font-family:Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+	background-color: white;
+	font-family: 'Cambo', serif;
+	background-image: url(imgs/stoneTextureAlleys.jpg);
+}
+h1, h2, h3, h4, h5 {
+	font-family: 'Gudea', sans-serif;
+}
+.container {
+	background-color: #EDF2F1;
+}
+/*Navbar*/
+.navHolder, .holder, .navbar-inverse {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	background-color: #c8bdb0;
+	border: none;
+}
+.navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
+	color: black;
+}
+/*Home page*/
+.jumbotron {
+	text-align: center;
+	background-color: #88837b;
+	border-radius: 0px !important;
+	border-bottom-left-radius: 23% !important;
+	border-bottom-right-radius: 23% !important;
+}
+
+.frontTxt p{
+	font-size: 20px;
+}
+
+.frontImg {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 40%;
+}
+
+/*Contact us*/
+.contact {
+	padding-top: 25px;
+	text-align: center;
+}
+.email {
+	padding-top: 20px;
+}
+
+
+/*footer*/
+footer {
+	text-align: right;
+}
+footer a {
+	color: grey;
 }
