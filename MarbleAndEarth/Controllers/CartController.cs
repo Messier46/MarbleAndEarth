@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using MarbleAndEarth.Models;
 using Microsoft.AspNet.Identity;
 
@@ -109,6 +110,7 @@ namespace MarbleAndEarth.Controllers
                 using (MEContext context = new MEContext())
                 {
                     obj.CustomerId = User.Identity.GetUserId();
+                    obj.CustomerEmail = User.Identity.GetUserName();
                     obj.ProductId = prodIdString;
                     obj.PurchaseDate = DateTime.Now;
                     context.Purchases.Add(obj);
